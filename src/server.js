@@ -6,10 +6,11 @@
 const express = require("express");
 const admin = require("firebase-admin");
 const cors = require("cors");
-const serviceAccount = require("./key.json");
+const serviceAccount = require("./key");
 const dotenv = require("dotenv");
 
 dotenv.config();
+
 // const admin = initializeApp();
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
