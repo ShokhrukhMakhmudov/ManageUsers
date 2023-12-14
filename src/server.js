@@ -7,7 +7,9 @@ const express = require("express");
 const admin = require("firebase-admin");
 const cors = require("cors");
 const serviceAccount = require("./key.json");
+const dotenv = require("dotenv");
 
+dotenv.config();
 // const admin = initializeApp();
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -38,7 +40,7 @@ app.get("/users", async (req, res) => {
     return res.sendStatus(401);
   }
 });
-
-app.listen(8081, () => {
+const port = process.env.PORT || 8081;
+app.listen(port, () => {
   console.log("server is running");
 });
